@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Demoblaze Regression Test-Suite" verbose="1">
-    <test name="Test Case #3 + #4">
+<suite name="Demoblaze Regression Test-Suite" parallel="classes" thread-count="2">
+    <test name="Test Case #3">
         <classes>
-            <class name="ua.solvd.demoblaze.AddToCartTest"/>
+            <class name="ua.solvd.demoblaze.cart.AddToCartTest"/>
         </classes>
     </test>
 </suite>
