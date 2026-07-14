@@ -1,4 +1,4 @@
-package ua.solvd.demoblaze;
+package ua.solvd.demoblaze.pages.impl;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

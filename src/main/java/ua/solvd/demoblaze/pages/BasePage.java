@@ -1,6 +1,7 @@
 package ua.solvd.demoblaze.pages;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ua.solvd.demoblaze.pages.impl.HeaderComponent;
 
 import java.time.Duration;
 import java.util.List;
@@ -23,6 +25,10 @@ public abstract class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+    }
+
+    public HeaderComponent getHeader() {
+        return new HeaderComponent(driver);
     }
 
     protected void clickElement(WebElement element, String elementName) {
@@ -63,5 +69,10 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
+    }
+
+    protected List<WebElement> waitForElementsPresenceByLocator(By locator, String elementsName) {
+        LOGGER.info("Waiting for presence of elements by locator: {}.", elementsName);
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 }

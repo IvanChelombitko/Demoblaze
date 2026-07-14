@@ -1,8 +1,9 @@
-package ua.solvd.demoblaze.pages;
+package ua.solvd.demoblaze.pages.impl;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.pages.BasePage;
 
 public class HeaderComponent extends BasePage {
 
@@ -13,7 +14,8 @@ public class HeaderComponent extends BasePage {
         super(driver);
     }
 
-    public void clickCart() {
+    public CartPage clickCart() {
         clickElement(cartNavLink, "Cart Navigation Link");
+        return new CartPage(driver);
     }
 }

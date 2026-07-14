@@ -5,23 +5,24 @@ import org.testng.annotations.Test;
 import ua.solvd.demoblaze.*;
 import ua.solvd.demoblaze.enums.Category;
 import ua.solvd.demoblaze.enums.Product;
-import ua.solvd.demoblaze.pages.HeaderComponent;
+import ua.solvd.demoblaze.pages.impl.CartPage;
+import ua.solvd.demoblaze.pages.impl.HomePage;
+import ua.solvd.demoblaze.pages.impl.ProductPage;
 
-public class AddToCartTest extends BaseClassTest {
+public class AddToCartTest extends BaseTest {
 
     @Test
     public void verifyAddingProductToCart() {
-        HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        homePage.selectCategory(Category.PHONES.getName());
-        homePage.selectProduct(Product.SAMSUNG_GALAXY_S6.getName());
-        ProductPage productPage = new ProductPage(getDriver());
+        ProductPage productPage = new HomePage(getDriver())
+                .open()
+                .selectCategory(Category.PHONES)
+                .selectProduct(Product.SAMSUNG_GALAXY_S6);
         productPage.clickAddToCart();
         String alertMessage = productPage.getAlertTextAndAccept();
         Assert.assertEquals(alertMessage, "Product added", "Alert text has wrong content.");
-        HeaderComponent header = new HeaderComponent(getDriver());
-        header.clickCart();
-        CartPage cartPage = new CartPage(getDriver());
-        Assert.assertTrue(cartPage.isProductInCart(Product.SAMSUNG_GALAXY_S6.getName()), "Product is absent in the cart.");
+        CartPage cartPage = productPage.getHeader().clickCart();
+        Assert.assertEquals(cartPage.getCartItemsCount(), 1, "Cart should contain exactly 1 item.");
+        Assert.assertEquals(cartPage.getFirstCartItemName(), Product.SAMSUNG_GALAXY_S6.getName(), "Name mismatch.");
+        Assert.assertEquals(cartPage.getFirstCartItemPrice(), Product.SAMSUNG_GALAXY_S6.getPrice(), "Price mismatch.");
     }
 }
