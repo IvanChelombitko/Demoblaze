@@ -10,6 +10,12 @@ public class HeaderComponent extends BasePage {
     @FindBy(css = "#cartur")
     private WebElement cartNavLink;
 
+    @FindBy(css = "a[data-target='#exampleModal']")
+    private WebElement contactLink;
+
+    @FindBy(css = "#signin2")
+    private WebElement signUpLink;
+
     public HeaderComponent(WebDriver driver) {
         super(driver);
     }
@@ -17,5 +23,15 @@ public class HeaderComponent extends BasePage {
     public CartPage clickCart() {
         clickElement(cartNavLink, "Cart Navigation Link");
         return new CartPage(driver);
+    }
+
+    public ContactModalComponent clickContact() {
+        clickElement(contactLink, "Contact Link");
+        return new ContactModalComponent(driver);
+    }
+
+    public SignUpModalComponent clickSignUp() {
+        clickElement(signUpLink, "Sign Up Link");
+        return new SignUpModalComponent(driver);
     }
 }

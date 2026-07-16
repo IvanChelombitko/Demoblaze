@@ -19,6 +19,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".hrefch")
     private List<WebElement> products;
 
+    @FindBy(css = ".list-group")
+    private WebElement categoriesMenu;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -47,5 +50,9 @@ public class HomePage extends BasePage {
                 .orElseThrow(() -> new NoSuchElementException("Product with name '" + product.getName() + "' was not found on the page."));
         clickElement(targetProduct, "Product: " + product.getName());
         return new ProductPage(driver);
+    }
+
+    public boolean isCategoriesMenuDisplayed() {
+        return isElementVisible(categoriesMenu, "Categories Menu");
     }
 }
