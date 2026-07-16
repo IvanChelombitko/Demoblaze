@@ -30,7 +30,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage selectCategory(Category category) {
-        waitForElementsVisibility(categories, "Categories Sidebar");
+        waitForListToLoad(categories, "Categories Sidebar");
         WebElement targetCategory = categories.stream()
                 .filter(c -> c.getText().trim().equalsIgnoreCase(category.getName()))
                 .findFirst()
@@ -40,7 +40,7 @@ public class HomePage extends BasePage {
     }
 
     public ProductPage selectProduct(Product product) {
-        waitForElementsVisibility(products, "Products Grid");
+        waitForListToLoad(products, "Products Grid");
         WebElement targetProduct = products.stream()
                 .filter(p -> p.getText().trim().equalsIgnoreCase(product.getName()))
                 .findFirst()

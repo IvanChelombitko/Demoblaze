@@ -18,4 +18,8 @@ public class ProductPage extends BasePage {
         hoverOverElement(addToCartButton, "Add to cart button");
         clickElement(addToCartButton, "Add to cart button");
     }
+
+    public String acceptProductAddedAlert() {
+        return getAlertTextAndAccept();
+    }
 }

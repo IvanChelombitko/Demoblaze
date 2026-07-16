@@ -2,7 +2,7 @@
 <suite name="Demoblaze Regression Test-Suite" parallel="classes" thread-count="2">
     <test name="Test Case #3">
         <classes>
-            <class name="ua.solvd.demoblaze.cart.AddToCartTest"/>
+            <class name="ua.solvd.demoblaze.impl.AddToCartTest"/>
         </classes>
     </test>
 </suite>
