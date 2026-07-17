@@ -1,4 +1,4 @@
-package ua.solvd.demoblaze.enums;
+package ua.solvd.demoblaze.model;
 
 public enum Product {
     SAMSUNG_GALAXY_S6("Samsung galaxy s6", "360"),

@@ -4,8 +4,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ua.solvd.demoblaze.enums.Category;
-import ua.solvd.demoblaze.enums.Product;
+import ua.solvd.demoblaze.model.Category;
+import ua.solvd.demoblaze.model.Product;
 import ua.solvd.demoblaze.pages.BasePage;
 import ua.solvd.demoblaze.util.ConfigReader;
 
@@ -30,6 +30,10 @@ public class HomePage extends BasePage {
         String demoblazeUrl = ConfigReader.getProperty("base.url");
         driver.get(demoblazeUrl);
         return this;
+    }
+
+    public HeaderComponent getHeader() {
+        return new HeaderComponent(driver);
     }
 
     public HomePage selectCategory(Category category) {

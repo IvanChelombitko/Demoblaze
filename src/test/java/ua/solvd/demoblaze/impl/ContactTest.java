@@ -12,7 +12,7 @@ public class ContactTest extends BaseTest {
     @Test
     public void verifyContactFormSubmission() {
         HomePage homePage = new HomePage(getDriver()).open();
-        HeaderComponent header = new HeaderComponent(getDriver());
+        HeaderComponent header = homePage.getHeader();
         ContactModalComponent contactModal = header.clickContact();
         contactModal.fillContactForm("testuser@example.com", "John Doe", "Hello, this is a test message.");
         contactModal.clickSendMessage();

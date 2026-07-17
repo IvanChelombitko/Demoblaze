@@ -5,6 +5,11 @@
             <class name="ua.solvd.demoblaze.impl.SignUpTest"/>
         </classes>
     </test>
+    <test name="Test Case #2">
+        <classes>
+            <class name="ua.solvd.demoblaze.impl.LoginTest"/>
+        </classes>
+    </test>
     <test name="Test Case #3">
         <classes>
             <class name="ua.solvd.demoblaze.impl.AddToCartTest"/>
@@ -13,6 +18,11 @@
     <test name="Test Case #4">
         <classes>
             <class name="ua.solvd.demoblaze.impl.ContactTest"/>
+        </classes>
+    </test>
+    <test name="Test Case #5">
+        <classes>
+            <class name="ua.solvd.demoblaze.impl.NegativeLoginTest"/>
         </classes>
     </test>
 </suite>
