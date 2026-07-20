@@ -11,7 +11,9 @@ public class ContactTest extends BaseTest {
 
     @Test
     public void verifyContactFormSubmission() {
-        HomePage homePage = new HomePage(getDriver()).open();
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
         HeaderComponent header = homePage.getHeader();
         ContactModalComponent contactModal = header.clickContact();
         contactModal.fillContactForm("testuser@example.com", "John Doe", "Hello, this is a test message.");

@@ -1,36 +1,41 @@
 package ua.solvd.demoblaze.pages.impl;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
 public class SignUpModalComponent extends BasePage {
 
+    @Name("Sign Up Username")
     @FindBy(css = "#sign-username")
-    private WebElement usernameInput;
+    private ExtendedWebElement usernameInput;
 
+    @Name("Sign Up Password")
     @FindBy(css = "#sign-password")
-    private WebElement passwordInput;
+    private ExtendedWebElement passwordInput;
 
+    @Name("Sign Up Button")
     @FindBy(css = "button[onclick='register()']")
-    private WebElement signUpButton;
+    private ExtendedWebElement signUpButton;
 
+    @Name("Sign Up Modal Container")
     @FindBy(css = "#signInModal")
-    private WebElement modalContainer;
+    private ExtendedWebElement modalContainer;
 
     public SignUpModalComponent(WebDriver driver) {
         super(driver);
     }
 
     public SignUpModalComponent fillSignUpForm(String username, String password) {
-        typeText(usernameInput, username, "Sign Up Username");
-        typeText(passwordInput, password, "Sign Up Password");
+        usernameInput.type(username);
+        passwordInput.type(password);
         return this;
     }
 
     public void clickSignUpButton() {
-        clickElement(signUpButton, "Sign Up Button");
+        signUpButton.click();
     }
 
     public String acceptSignUpAlert() {
@@ -38,6 +43,6 @@ public class SignUpModalComponent extends BasePage {
     }
 
     public boolean isModalClosed() {
-        return waitForElementToDisappear(modalContainer, "Sign Up Modal Container");
+        return modalContainer.waitUntilElementDisappear(DEFAULT_TIMEOUT);
     }
 }

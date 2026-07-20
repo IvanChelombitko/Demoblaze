@@ -1,40 +1,45 @@
 package ua.solvd.demoblaze.pages.impl;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
 public class LoginModalComponent extends BasePage {
 
+    @Name("Login Username")
     @FindBy(css = "#loginusername")
-    private WebElement usernameInput;
+    private ExtendedWebElement usernameInput;
 
+    @Name("Login Password")
     @FindBy(css = "#loginpassword")
-    private WebElement passwordInput;
+    private ExtendedWebElement passwordInput;
 
+    @Name("Log In Button")
     @FindBy(css = "button[onclick='logIn()']")
-    private WebElement logInButton;
+    private ExtendedWebElement logInButton;
 
+    @Name("Log In Modal Container")
     @FindBy(css = "#logInModal")
-    private WebElement modalContainer;
+    private ExtendedWebElement modalContainer;
 
     public LoginModalComponent(WebDriver driver) {
         super(driver);
     }
 
     public LoginModalComponent fillLoginForm(String username, String password) {
-        typeText(usernameInput, username, "Login Username");
-        typeText(passwordInput, password, "Login Password");
+        usernameInput.type(username);
+        passwordInput.type(password);
         return this;
     }
 
     public void clickLogInButton() {
-        clickElement(logInButton, "Log In Button");
+        logInButton.click();
     }
 
     public boolean isModalClosed() {
-        return waitForElementToDisappear(modalContainer, "Log In Modal Container");
+        return modalContainer.waitUntilElementDisappear(DEFAULT_TIMEOUT);
     }
 
     public String acceptLoginAlert() {

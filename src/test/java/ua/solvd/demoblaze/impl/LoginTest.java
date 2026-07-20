@@ -14,7 +14,9 @@ public class LoginTest extends BaseTest {
     @Test
     public void verifySuccessfulUserLogin() {
         User user = UserService.createPredefinedUser();
-        HomePage homePage = new HomePage(getDriver()).open();
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
         HeaderComponent header = homePage.getHeader();
         LoginModalComponent loginModal = header.clickLogIn();
         loginModal.fillLoginForm(user.username(), user.password())

@@ -1,40 +1,44 @@
 package ua.solvd.demoblaze.pages.impl;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
 public class ContactModalComponent extends BasePage {
 
+    @Name("Contact Email Input")
     @FindBy(css = "#recipient-email")
-    private WebElement emailInput;
+    private ExtendedWebElement emailInput;
 
+    @Name("Contact Name")
     @FindBy(css = "#recipient-name")
-    private WebElement nameInput;
+    private ExtendedWebElement nameInput;
 
+    @Name("Contact Message")
     @FindBy(css = "#message-text")
-    private WebElement messageInput;
+    private ExtendedWebElement messageInput;
 
     @FindBy(css = "button[onclick='send()']")
-    private WebElement sendMessageButton;
+    private ExtendedWebElement sendMessageButton;
 
     @FindBy(css = "#exampleModal")
-    private WebElement modalContainer;
+    private ExtendedWebElement modalContainer;
 
     public ContactModalComponent(WebDriver driver) {
         super(driver);
     }
 
     public ContactModalComponent fillContactForm(String email, String name, String message) {
-        typeText(emailInput, email, "Contact Email");
-        typeText(nameInput, name, "Contact Name");
-        typeText(messageInput, message, "Contact Message");
+        emailInput.type(email);
+        nameInput.type(name);
+        messageInput.type(message);
         return this;
     }
 
     public void clickSendMessage() {
-        clickElement(sendMessageButton, "Send message button");
+        sendMessageButton.clickByJs();
     }
 
     public String acceptMessageSentAlert() {
@@ -42,6 +46,6 @@ public class ContactModalComponent extends BasePage {
     }
 
     public boolean isModalClosed() {
-        return waitForElementToDisappear(modalContainer, "Contact Modal Container");
+        return modalContainer.waitUntilElementDisappear(DEFAULT_TIMEOUT);
     }
 }

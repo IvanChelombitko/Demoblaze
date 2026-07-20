@@ -1,72 +1,78 @@
 package ua.solvd.demoblaze.pages.impl;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
 public class HeaderComponent extends BasePage {
 
+    @Name("Cart Navigation Link")
     @FindBy(css = "#cartur")
-    private WebElement cartNavLink;
+    private ExtendedWebElement cartNavLink;
 
+    @Name("Contact Link")
     @FindBy(css = "a[data-target='#exampleModal']")
-    private WebElement contactLink;
+    private ExtendedWebElement contactLink;
 
+    @Name("Sign Up Link")
     @FindBy(css = "#signin2")
-    private WebElement signUpLink;
+    private ExtendedWebElement signUpLink;
 
+    @Name("Log In Link")
     @FindBy(css = "#login2")
-    private WebElement logInLink;
+    private ExtendedWebElement logInLink;
 
+    @Name("Log Out Link")
     @FindBy(css = "#logout2")
-    private WebElement logOutLink;
+    private ExtendedWebElement logOutLink;
 
+    @Name("Welcome Message")
     @FindBy(css = "#nameofuser")
-    private WebElement welcomeMessage;
+    private ExtendedWebElement welcomeMessage;
 
     public HeaderComponent(WebDriver driver) {
         super(driver);
     }
 
     public CartPage clickCart() {
-        clickElement(cartNavLink, "Cart Navigation Link");
-        return new CartPage(driver);
+        cartNavLink.click();
+        return new CartPage(getDriver());
     }
 
     public ContactModalComponent clickContact() {
-        clickElement(contactLink, "Contact Link");
-        return new ContactModalComponent(driver);
+        contactLink.click();
+        return new ContactModalComponent(getDriver());
     }
 
     public SignUpModalComponent clickSignUp() {
-        clickElement(signUpLink, "Sign Up Link");
-        return new SignUpModalComponent(driver);
+        signUpLink.click();
+        return new SignUpModalComponent(getDriver());
     }
 
     public LoginModalComponent clickLogIn() {
-        clickElement(logInLink, "Log In Link");
-        return new LoginModalComponent(driver);
+        logInLink.click();
+        return new LoginModalComponent(getDriver());
     }
 
     public boolean isWelcomeMessageDisplayed() {
-        return isElementVisible(welcomeMessage, "Welcome Message");
+        return welcomeMessage.isElementPresent();
     }
 
     public String getWelcomeMessageText() {
-        isElementVisible(welcomeMessage, "Welcome Message");
         return welcomeMessage.getText();
     }
 
     public boolean isLogOutLinkDisplayed() {
-        return isElementVisible(logOutLink, "Log Out Link");
+        return logOutLink.isElementPresent();
     }
 
     public boolean isLogInLinkInvisible() {
-        return waitForElementToDisappear(logInLink, "Log In Link");
+        return logInLink.waitUntilElementDisappear(DEFAULT_TIMEOUT);
     }
 
     public boolean isSignUpLinkInvisible() {
-        return waitForElementToDisappear(signUpLink, "Sign Up Link");
+        return signUpLink.waitUntilElementDisappear(DEFAULT_TIMEOUT);
     }
 }
