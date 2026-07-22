@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solvd.demoblaze.BaseTest;
 import ua.solvd.demoblaze.model.User;
-import ua.solvd.demoblaze.pages.impl.HeaderComponent;
-import ua.solvd.demoblaze.pages.impl.HomePage;
-import ua.solvd.demoblaze.pages.impl.LoginModalComponent;
+import ua.solvd.demoblaze.pages.impl.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.impl.HomePageCommon;
+import ua.solvd.demoblaze.pages.impl.LoginModalComponentCommon;
 import ua.solvd.demoblaze.util.UserService;
 
 public class NegativeLoginTest extends BaseTest {
@@ -14,11 +14,11 @@ public class NegativeLoginTest extends BaseTest {
     @Test
     public void verifyLoginFailsWithInvalidCredentials() {
         User user = UserService.createRandomUser();
-        HomePage homePage = new HomePage(getDriver());
+        HomePageCommon homePage = initPage(getDriver(), HomePageCommon.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
-        HeaderComponent header = homePage.getHeader();
-        LoginModalComponent loginModal = header.clickLogIn();
+        HeaderComponentCommon header = homePage.getHeader();
+        LoginModalComponentCommon loginModal = header.clickLogIn();
         loginModal.fillLoginForm(user.username(), user.password())
                 .clickLogInButton();
         String alertMessage = loginModal.acceptLoginAlert();

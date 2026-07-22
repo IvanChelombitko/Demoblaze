@@ -3,19 +3,19 @@ package ua.solvd.demoblaze.impl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solvd.demoblaze.BaseTest;
-import ua.solvd.demoblaze.pages.impl.ContactModalComponent;
-import ua.solvd.demoblaze.pages.impl.HeaderComponent;
-import ua.solvd.demoblaze.pages.impl.HomePage;
+import ua.solvd.demoblaze.pages.impl.ContactModalComponentCommon;
+import ua.solvd.demoblaze.pages.impl.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.impl.HomePageCommon;
 
 public class ContactTest extends BaseTest {
 
     @Test
     public void verifyContactFormSubmission() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageCommon homePage = initPage(getDriver(), HomePageCommon.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
-        HeaderComponent header = homePage.getHeader();
-        ContactModalComponent contactModal = header.clickContact();
+        HeaderComponentCommon header = homePage.getHeader();
+        ContactModalComponentCommon contactModal = header.clickContact();
         contactModal.fillContactForm("testuser@example.com", "John Doe", "Hello, this is a test message.");
         contactModal.clickSendMessage();
         String alertMessage = contactModal.acceptMessageSentAlert();

@@ -11,32 +11,32 @@ import ua.solvd.demoblaze.pages.BasePage;
 
 import java.util.List;
 
-public class HomePage extends BasePage {
+public class HomePageCommon extends BasePage {
 
     @Name("Categories")
     @FindBy(css = ".list-group a")
-    private List<ExtendedWebElement> categories;
+    protected List<ExtendedWebElement> categories;
 
     @Name("Products")
     @FindBy(css = ".hrefch")
-    private List<ExtendedWebElement> products;
+    protected List<ExtendedWebElement> products;
 
     @Name("Categories Menu")
     @FindBy(css = ".list-group")
-    private ExtendedWebElement categoriesMenu;
+    protected ExtendedWebElement categoriesMenu;
 
     @FindBy(css = ".hrefch")
-    private ExtendedWebElement firstProductIndicator;
+    protected ExtendedWebElement firstProductIndicator;
 
-    public HomePage(WebDriver driver) {
+    public HomePageCommon(WebDriver driver) {
         super(driver);
     }
 
-    public HeaderComponent getHeader() {
-        return new HeaderComponent(getDriver());
+    public HeaderComponentCommon getHeader() {
+        return initPage(getDriver(), HeaderComponentCommon.class);
     }
 
-    public HomePage selectCategory(Category category) {
+    public HomePageCommon selectCategory(Category category) {
         categoriesMenu.isElementPresent(MINIMUM_TIMEOUT);
         ExtendedWebElement targetCategory = categories.stream()
                 .filter(c -> c.getText().trim().equalsIgnoreCase(category.getName()))
@@ -46,14 +46,14 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public ProductPage selectProduct(Product product) {
+    public ProductPageCommon selectProduct(Product product) {
         firstProductIndicator.isElementPresent(MINIMUM_TIMEOUT);
         ExtendedWebElement targetProduct = products.stream()
                 .filter(p -> p.getText().trim().equalsIgnoreCase(product.getName()))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("Product with name '" + product.getName() + "' was not found on the page."));
         targetProduct.click();
-        return new ProductPage(getDriver());
+        return initPage(getDriver(), ProductPageCommon.class);
     }
 
     public boolean isCategoriesMenuDisplayed() {
