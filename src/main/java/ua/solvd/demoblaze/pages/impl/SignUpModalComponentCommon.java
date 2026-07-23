@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class SignUpModalComponentCommon extends BasePage {
+public abstract class SignUpModalComponentCommon extends BasePage {
 
     @Name("Sign Up Username")
     @FindBy(css = "#sign-username")

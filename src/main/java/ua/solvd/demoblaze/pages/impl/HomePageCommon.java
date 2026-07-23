@@ -11,7 +11,7 @@ import ua.solvd.demoblaze.pages.BasePage;
 
 import java.util.List;
 
-public class HomePageCommon extends BasePage {
+public abstract class HomePageCommon extends BasePage {
 
     @Name("Categories")
     @FindBy(css = ".list-group a")

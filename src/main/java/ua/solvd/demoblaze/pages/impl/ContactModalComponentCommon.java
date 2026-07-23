@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class ContactModalComponentCommon extends BasePage {
+public abstract class ContactModalComponentCommon extends BasePage {
 
     @Name("Contact Email Input")
     @FindBy(css = "#recipient-email")

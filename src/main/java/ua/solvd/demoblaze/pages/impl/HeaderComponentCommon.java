@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class HeaderComponentCommon extends BasePage {
+public abstract class HeaderComponentCommon extends BasePage {
 
     @Name("Cart Navigation Link")
     @FindBy(css = "#cartur")

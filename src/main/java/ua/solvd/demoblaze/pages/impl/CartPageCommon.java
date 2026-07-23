@@ -7,7 +7,7 @@ import ua.solvd.demoblaze.pages.BasePage;
 
 import java.util.List;
 
-public class CartPageCommon extends BasePage {
+public abstract class CartPageCommon extends BasePage {
 
     @FindBy(css = "#tbodyid tr")
     protected List<ExtendedWebElement> cartItemRows;

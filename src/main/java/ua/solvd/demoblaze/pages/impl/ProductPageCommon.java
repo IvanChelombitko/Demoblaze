@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class ProductPageCommon extends BasePage {
+public abstract class ProductPageCommon extends BasePage {
 
     @Name("Add to cart button")
     @FindBy(css = "a.btn.btn-success")
