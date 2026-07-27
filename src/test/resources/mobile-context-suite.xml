@@ -3,7 +3,7 @@
     <test name="Android Chrome Native Test Execution">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="ua.solvd.demoblaze.impl.ContextSwitchTest"/>
+            <class name="ua.solvd.demoblaze.mobile.ContextSwitchTest"/>
         </classes>
     </test>
 </suite>

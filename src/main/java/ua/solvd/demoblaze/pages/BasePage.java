@@ -24,4 +24,9 @@ public abstract class BasePage extends AbstractPage {
         alert.accept();
         return alertText;
     }
+
+    public HeaderComponentCommon getHeader() {
+        CommonBasePage basePage = initPage(getDriver(), CommonBasePage.class);
+        return basePage.getHeader();
+    }
 }
