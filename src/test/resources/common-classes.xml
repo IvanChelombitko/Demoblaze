@@ -1,7 +1,0 @@
-<classes>
-    <class name="ua.solvd.demoblaze.common.SignUpTest"/>
-    <class name="ua.solvd.demoblaze.common.LoginTest"/>
-    <class name="ua.solvd.demoblaze.common.AddToCartTest"/>
-    <class name="ua.solvd.demoblaze.common.ContactTest"/>
-    <class name="ua.solvd.demoblaze.common.NegativeLoginTest"/>
-</classes>

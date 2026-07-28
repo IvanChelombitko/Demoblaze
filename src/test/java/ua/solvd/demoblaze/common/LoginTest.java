@@ -6,7 +6,6 @@ import ua.solvd.demoblaze.BaseTest;
 import ua.solvd.demoblaze.model.User;
 import ua.solvd.demoblaze.pages.HeaderComponentCommon;
 import ua.solvd.demoblaze.pages.HomePageCommon;
-import ua.solvd.demoblaze.pages.LoginModalComponentCommon;
 import ua.solvd.demoblaze.util.UserService;
 
 public class LoginTest extends BaseTest {
@@ -24,7 +23,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(header.isWelcomeMessageDisplayed(), "Welcome message is not displayed.");
         Assert.assertEquals(header.getWelcomeMessageText(), "Welcome " + user.username(), "Welcome message text is incorrect.");
         Assert.assertTrue(header.isLogOutLinkDisplayed(), "Log out link is not displayed.");
-        Assert.assertTrue(header.isLogInLinkInvisible(), "Log in link is still visible.");
-        Assert.assertTrue(header.isSignUpLinkInvisible(), "Sign up link is still visible.");
+        Assert.assertTrue(header.waitUntilLogInLinkDisappears(), "Log in link is still visible.");
+        Assert.assertTrue(header.waitUntilSignUpLinkDisappears(), "Sign up link is still visible.");
     }
 }

@@ -1,21 +1,18 @@
 package ua.solvd.demoblaze.pages;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 
 public class ContactModalComponentCommon extends BasePage {
 
-    @Name("Contact Email Input")
     @FindBy(css = "#recipient-email")
     protected ExtendedWebElement emailInput;
 
-    @Name("Contact Name")
     @FindBy(css = "#recipient-name")
     protected ExtendedWebElement nameInput;
 
-    @Name("Contact Message")
     @FindBy(css = "#message-text")
     protected ExtendedWebElement messageInput;
 
@@ -45,6 +42,6 @@ public class ContactModalComponentCommon extends BasePage {
     }
 
     public boolean isModalClosed() {
-        return modalContainer.waitUntilElementDisappear(DEFAULT_TIMEOUT);
+        return modalContainer.waitUntilElementDisappear(Constants.DEFAULT_TIMEOUT);
     }
 }

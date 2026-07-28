@@ -13,7 +13,7 @@ import ua.solvd.demoblaze.pages.ProductPageCommon;
 public class AddToCartTest extends BaseTest {
 
     @Test
-    public void verifyAddingProductToCart() {
+    public void verifyProductIsAddedToCart() {
         HomePageCommon homePage = initPage(getDriver(), HomePageCommon.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");

@@ -1,25 +1,21 @@
 package ua.solvd.demoblaze.pages;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 
 public class SignUpModalComponentCommon extends BasePage {
 
-    @Name("Sign Up Username")
     @FindBy(css = "#sign-username")
     protected ExtendedWebElement usernameInput;
 
-    @Name("Sign Up Password")
     @FindBy(css = "#sign-password")
     protected ExtendedWebElement passwordInput;
 
-    @Name("Sign Up Button")
     @FindBy(css = "button[onclick='register()']")
     protected ExtendedWebElement signUpButton;
 
-    @Name("Sign Up Modal Container")
     @FindBy(css = "#signInModal")
     protected ExtendedWebElement modalContainer;
 
@@ -42,6 +38,6 @@ public class SignUpModalComponentCommon extends BasePage {
     }
 
     public boolean isModalClosed() {
-        return modalContainer.waitUntilElementDisappear(DEFAULT_TIMEOUT);
+        return modalContainer.waitUntilElementDisappear(Constants.DEFAULT_TIMEOUT);
     }
 }

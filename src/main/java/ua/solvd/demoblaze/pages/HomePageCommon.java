@@ -1,10 +1,10 @@
 package ua.solvd.demoblaze.pages;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import jdk.jfr.Name;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 import ua.solvd.demoblaze.model.Category;
 import ua.solvd.demoblaze.model.Product;
 
@@ -12,15 +12,12 @@ import java.util.List;
 
 public class HomePageCommon extends BasePage {
 
-    @Name("Categories")
     @FindBy(css = ".list-group a")
     protected List<ExtendedWebElement> categories;
 
-    @Name("Products")
     @FindBy(css = ".hrefch")
     protected List<ExtendedWebElement> products;
 
-    @Name("Categories Menu")
     @FindBy(css = ".list-group")
     protected ExtendedWebElement categoriesMenu;
 
@@ -32,7 +29,7 @@ public class HomePageCommon extends BasePage {
     }
 
     public HomePageCommon selectCategory(Category category) {
-        categoriesMenu.isElementPresent(MINIMUM_TIMEOUT);
+        categoriesMenu.isElementPresent(Constants.MINIMUM_TIMEOUT);
         ExtendedWebElement targetCategory = categories.stream()
                 .filter(c -> c.getText().trim().equalsIgnoreCase(category.getName()))
                 .findFirst()
@@ -42,7 +39,7 @@ public class HomePageCommon extends BasePage {
     }
 
     public ProductPageCommon selectProduct(Product product) {
-        firstProductIndicator.isElementPresent(MINIMUM_TIMEOUT);
+        firstProductIndicator.isElementPresent(Constants.MINIMUM_TIMEOUT);
         ExtendedWebElement targetProduct = products.stream()
                 .filter(p -> p.getText().trim().equalsIgnoreCase(product.getName()))
                 .findFirst()

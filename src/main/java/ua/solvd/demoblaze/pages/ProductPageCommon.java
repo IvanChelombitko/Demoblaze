@@ -1,13 +1,11 @@
 package ua.solvd.demoblaze.pages;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductPageCommon extends BasePage {
 
-    @Name("Add to cart button")
     @FindBy(css = "a.btn.btn-success")
     protected ExtendedWebElement addToCartButton;
 

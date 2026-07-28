@@ -3,6 +3,7 @@ package ua.solvd.demoblaze.pages;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 
 import java.util.List;
 
@@ -25,8 +26,10 @@ public class CartPageCommon extends BasePage {
     }
 
     public int getCartItemsCount() {
-        firstCartItemRow.isElementPresent(MINIMUM_TIMEOUT);
-        return cartItemRows.size();
+        if (firstCartItemRow.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
+            return cartItemRows.size();
+        }
+        return 0;
     }
 
     public String getFirstCartItemName() {

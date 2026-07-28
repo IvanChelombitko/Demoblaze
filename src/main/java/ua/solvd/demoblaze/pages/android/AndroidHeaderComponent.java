@@ -2,8 +2,10 @@ package ua.solvd.demoblaze.pages.android;
 
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 import ua.solvd.demoblaze.pages.CartPageCommon;
 import ua.solvd.demoblaze.pages.ContactModalComponentCommon;
 import ua.solvd.demoblaze.pages.HeaderComponentCommon;
@@ -16,21 +18,21 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @FindBy(css = ".navbar-toggler")
     private ExtendedWebElement hamburgerMenu;
 
-    public AndroidHeaderComponent(WebDriver driver) {
-        super(driver);
+    public AndroidHeaderComponent(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     private void expandMenu() {
-        if (hamburgerMenu.isElementPresent(MINIMUM_TIMEOUT)) {
+        if (hamburgerMenu.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
             hamburgerMenu.clickByJs();
-            pause(MINIMUM_TIMEOUT);
+            pause(Constants.MINIMUM_TIMEOUT);
         }
     }
 
     @Override
     public CartPageCommon clickCart() {
         expandMenu();
-        cartNavLink.isElementPresent(MINIMUM_TIMEOUT);
+        cartNavLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         cartNavLink.click();
         return initPage(getDriver(), CartPageCommon.class);
     }
@@ -38,7 +40,7 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public ContactModalComponentCommon clickContact() {
         expandMenu();
-        contactLink.isElementPresent(MINIMUM_TIMEOUT);
+        contactLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         contactLink.clickByJs();
         return initPage(getDriver(), ContactModalComponentCommon.class);
     }
@@ -46,7 +48,7 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public SignUpModalComponentCommon clickSignUp() {
         expandMenu();
-        signUpLink.isElementPresent(MINIMUM_TIMEOUT);
+        signUpLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         signUpLink.click();
         return initPage(getDriver(), SignUpModalComponentCommon.class);
     }
@@ -54,7 +56,7 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public LoginModalComponentCommon clickLogIn() {
         expandMenu();
-        logInLink.isElementPresent(MINIMUM_TIMEOUT);
+        logInLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         logInLink.click();
         return initPage(getDriver(), LoginModalComponentCommon.class);
     }

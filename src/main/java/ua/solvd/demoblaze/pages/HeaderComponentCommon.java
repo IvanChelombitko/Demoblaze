@@ -1,38 +1,35 @@
 package ua.solvd.demoblaze.pages;
 
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import jdk.jfr.Name;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ua.solvd.demoblaze.constant.Constants;
 
-public class HeaderComponentCommon extends BasePage {
+public class HeaderComponentCommon extends AbstractUIObject implements ICustomTypePageFactory {
 
-    @Name("Cart Navigation Link")
     @FindBy(css = "#cartur")
     protected ExtendedWebElement cartNavLink;
 
-    @Name("Contact Link")
     @FindBy(css = "a[data-target='#exampleModal']")
     protected ExtendedWebElement contactLink;
 
-    @Name("Sign Up Link")
     @FindBy(css = "#signin2")
     protected ExtendedWebElement signUpLink;
 
-    @Name("Log In Link")
     @FindBy(css = "#login2")
     protected ExtendedWebElement logInLink;
 
-    @Name("Log Out Link")
     @FindBy(css = "#logout2")
     protected ExtendedWebElement logOutLink;
 
-    @Name("Welcome Message")
     @FindBy(css = "#nameofuser")
     protected ExtendedWebElement welcomeMessage;
 
-    public HeaderComponentCommon(WebDriver driver) {
-        super(driver);
+    public HeaderComponentCommon(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     public CartPageCommon clickCart() {
@@ -67,11 +64,11 @@ public class HeaderComponentCommon extends BasePage {
         return logOutLink.isElementPresent();
     }
 
-    public boolean isLogInLinkInvisible() {
-        return logInLink.waitUntilElementDisappear(DEFAULT_TIMEOUT);
+    public boolean waitUntilLogInLinkDisappears() {
+        return logInLink.waitUntilElementDisappear(Constants.DEFAULT_TIMEOUT);
     }
 
-    public boolean isSignUpLinkInvisible() {
-        return signUpLink.waitUntilElementDisappear(DEFAULT_TIMEOUT);
+    public boolean waitUntilSignUpLinkDisappears() {
+        return signUpLink.waitUntilElementDisappear(Constants.DEFAULT_TIMEOUT);
     }
 }
