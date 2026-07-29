@@ -26,10 +26,10 @@ public class CartPageCommon extends BasePage {
     }
 
     public int getCartItemsCount() {
-        if (firstCartItemRow.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
-            return cartItemRows.size();
+        if (firstCartItemRow.isElementNotPresent(Constants.MINIMUM_TIMEOUT)) {
+            return 0;
         }
-        return 0;
+        return cartItemRows.size();
     }
 
     public String getFirstCartItemName() {

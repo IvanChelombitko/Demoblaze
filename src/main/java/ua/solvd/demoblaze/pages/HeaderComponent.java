@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.constant.Constants;
 
-public class HeaderComponentCommon extends AbstractUIObject implements ICustomTypePageFactory {
+public class HeaderComponent extends AbstractUIObject implements ICustomTypePageFactory {
 
     @FindBy(css = "#cartur")
     protected ExtendedWebElement cartNavLink;
@@ -28,7 +28,7 @@ public class HeaderComponentCommon extends AbstractUIObject implements ICustomTy
     @FindBy(css = "#nameofuser")
     protected ExtendedWebElement welcomeMessage;
 
-    public HeaderComponentCommon(WebDriver driver, SearchContext searchContext) {
+    public HeaderComponent(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

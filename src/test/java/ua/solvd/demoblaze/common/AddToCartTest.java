@@ -6,7 +6,7 @@ import ua.solvd.demoblaze.BaseTest;
 import ua.solvd.demoblaze.model.Category;
 import ua.solvd.demoblaze.model.Product;
 import ua.solvd.demoblaze.pages.CartPageCommon;
-import ua.solvd.demoblaze.pages.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.HeaderComponent;
 import ua.solvd.demoblaze.pages.HomePageCommon;
 import ua.solvd.demoblaze.pages.ProductPageCommon;
 
@@ -23,7 +23,7 @@ public class AddToCartTest extends BaseTest {
         productPage.clickAddToCart();
         String alertMessage = productPage.acceptProductAddedAlert();
         Assert.assertEquals(alertMessage, "Product added", "Alert text has wrong content.");
-        HeaderComponentCommon header = productPage.getHeader();
+        HeaderComponent header = productPage.getHeader();
         CartPageCommon cartPage = header.clickCart();
         Assert.assertEquals(cartPage.getCartItemsCount(), 1, "Cart should contain exactly 1 item.");
         Assert.assertEquals(cartPage.getFirstCartItemName(), Product.SAMSUNG_GALAXY_S6.getName(), "Name mismatch.");

@@ -4,7 +4,6 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ua.solvd.demoblaze.constant.Constants;
 import ua.solvd.demoblaze.pages.ChromeNativePageCommon;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ChromeNativePageCommon.class)
@@ -22,14 +21,12 @@ public class AndroidChromeNativePage extends ChromeNativePageCommon {
 
     @Override
     public ChromeNativePageCommon clickTabSwitcher() {
-        menuButton.isElementPresent(Constants.MINIMUM_TIMEOUT);
         menuButton.click();
         return this;
     }
 
     @Override
     public ChromeNativePageCommon clickNewTab() {
-        newTabMenuItem.isElementPresent(Constants.MINIMUM_TIMEOUT);
         newTabMenuItem.click();
         return this;
     }

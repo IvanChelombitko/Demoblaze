@@ -9,5 +9,5 @@ public abstract class CommonBasePage extends AbstractPage {
         super(driver);
     }
 
-    public abstract HeaderComponentCommon getHeader();
+    public abstract HeaderComponent getHeader();
 }

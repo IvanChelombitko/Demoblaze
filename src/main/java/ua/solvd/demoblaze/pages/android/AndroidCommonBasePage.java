@@ -4,7 +4,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.CommonBasePage;
-import ua.solvd.demoblaze.pages.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.HeaderComponent;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CommonBasePage.class)
 public class AndroidCommonBasePage extends CommonBasePage {
@@ -17,7 +17,7 @@ public class AndroidCommonBasePage extends CommonBasePage {
     }
 
     @Override
-    public HeaderComponentCommon getHeader() {
+    public HeaderComponent getHeader() {
         return header;
     }
 }

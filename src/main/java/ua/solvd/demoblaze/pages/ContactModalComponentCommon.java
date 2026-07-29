@@ -38,7 +38,8 @@ public class ContactModalComponentCommon extends BasePage {
     }
 
     public String acceptMessageSentAlert() {
-        return getAlertTextAndAccept();
+        getAlert();
+        return acceptAlertAndGetText();
     }
 
     public boolean isModalClosed() {

@@ -36,6 +36,7 @@ public class LoginModalComponentCommon extends BasePage {
     }
 
     public String acceptLoginAlert() {
-        return getAlertTextAndAccept();
+        getAlert();
+        return acceptAlertAndGetText();
     }
 }

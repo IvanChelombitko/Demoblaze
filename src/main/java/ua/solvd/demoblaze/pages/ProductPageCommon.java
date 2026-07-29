@@ -19,6 +19,7 @@ public class ProductPageCommon extends BasePage {
     }
 
     public String acceptProductAddedAlert() {
-        return getAlertTextAndAccept();
+        getAlert();
+        return acceptAlertAndGetText();
     }
 }

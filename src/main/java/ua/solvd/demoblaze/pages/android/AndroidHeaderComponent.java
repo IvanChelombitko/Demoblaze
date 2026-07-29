@@ -8,12 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.constant.Constants;
 import ua.solvd.demoblaze.pages.CartPageCommon;
 import ua.solvd.demoblaze.pages.ContactModalComponentCommon;
-import ua.solvd.demoblaze.pages.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.HeaderComponent;
 import ua.solvd.demoblaze.pages.LoginModalComponentCommon;
 import ua.solvd.demoblaze.pages.SignUpModalComponentCommon;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HeaderComponentCommon.class)
-public class AndroidHeaderComponent extends HeaderComponentCommon {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HeaderComponent.class)
+public class AndroidHeaderComponent extends HeaderComponent {
 
     @FindBy(css = ".navbar-toggler")
     private ExtendedWebElement hamburgerMenu;
@@ -32,7 +32,6 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public CartPageCommon clickCart() {
         expandMenu();
-        cartNavLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         cartNavLink.click();
         return initPage(getDriver(), CartPageCommon.class);
     }
@@ -40,7 +39,6 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public ContactModalComponentCommon clickContact() {
         expandMenu();
-        contactLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         contactLink.clickByJs();
         return initPage(getDriver(), ContactModalComponentCommon.class);
     }
@@ -48,7 +46,6 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public SignUpModalComponentCommon clickSignUp() {
         expandMenu();
-        signUpLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         signUpLink.click();
         return initPage(getDriver(), SignUpModalComponentCommon.class);
     }
@@ -56,7 +53,6 @@ public class AndroidHeaderComponent extends HeaderComponentCommon {
     @Override
     public LoginModalComponentCommon clickLogIn() {
         expandMenu();
-        logInLink.isElementPresent(Constants.MINIMUM_TIMEOUT);
         logInLink.click();
         return initPage(getDriver(), LoginModalComponentCommon.class);
     }

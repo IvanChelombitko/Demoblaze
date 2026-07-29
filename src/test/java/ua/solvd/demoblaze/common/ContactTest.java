@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solvd.demoblaze.BaseTest;
 import ua.solvd.demoblaze.pages.ContactModalComponentCommon;
-import ua.solvd.demoblaze.pages.HeaderComponentCommon;
+import ua.solvd.demoblaze.pages.HeaderComponent;
 import ua.solvd.demoblaze.pages.HomePageCommon;
 
 public class ContactTest extends BaseTest {
@@ -14,7 +14,7 @@ public class ContactTest extends BaseTest {
         HomePageCommon homePage = initPage(getDriver(), HomePageCommon.class);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
-        HeaderComponentCommon header = homePage.getHeader();
+        HeaderComponent header = homePage.getHeader();
         ContactModalComponentCommon contactModal = header.clickContact();
         contactModal.fillContactForm("testuser@example.com", "John Doe", "Hello, this is a test message.");
         contactModal.clickSendMessage();

@@ -11,15 +11,19 @@ public abstract class BasePage extends AbstractPage {
         super(driver);
     }
 
-    protected String getAlertTextAndAccept() {
+    protected Alert getAlert() {
         waitUntil(ExpectedConditions.alertIsPresent(), Constants.DEFAULT_TIMEOUT);
-        Alert alert = getDriver().switchTo().alert();
-        String alertText = alert.getText();
-        alert.accept();
-        return alertText;
+        return getDriver().switchTo().alert();
     }
 
-    public HeaderComponentCommon getHeader() {
+    protected String acceptAlertAndGetText() {
+        Alert alert = getAlert();
+        String text = alert.getText();
+        alert.accept();
+        return text;
+    }
+
+    public HeaderComponent getHeader() {
         CommonBasePage basePage = initPage(getDriver(), CommonBasePage.class);
         return basePage.getHeader();
     }

@@ -34,7 +34,8 @@ public class SignUpModalComponentCommon extends BasePage {
     }
 
     public String acceptSignUpAlert() {
-        return getAlertTextAndAccept();
+        getAlert();
+        return acceptAlertAndGetText();
     }
 
     public boolean isModalClosed() {
