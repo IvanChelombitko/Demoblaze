@@ -1,22 +1,24 @@
 package ua.solvd.demoblaze.pages.impl;
 
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import jdk.jfr.Name;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
 public class ProductPage extends BasePage {
 
+    @Name("Add to cart button")
     @FindBy(css = "a.btn.btn-success")
-    private WebElement addToCartButton;
+    private ExtendedWebElement addToCartButton;
 
     public ProductPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickAddToCart() {
-        hoverOverElement(addToCartButton, "Add to cart button");
-        clickElement(addToCartButton, "Add to cart button");
+        addToCartButton.hover();
+        addToCartButton.click();
     }
 
     public String acceptProductAddedAlert() {

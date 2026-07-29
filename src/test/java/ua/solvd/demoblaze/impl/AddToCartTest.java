@@ -14,7 +14,9 @@ public class AddToCartTest extends BaseTest {
 
     @Test
     public void verifyAddingProductToCart() {
-        HomePage homePage = new HomePage(getDriver()).open();
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
         ProductPage productPage = homePage
                 .selectCategory(Category.PHONES)
                 .selectProduct(Product.SAMSUNG_GALAXY_S6);

@@ -14,7 +14,9 @@ public class SignUpTest extends BaseTest {
     @Test
     public void verifySuccessfulUserRegistration() {
         User user = UserService.createRandomUser();
-        HomePage homePage = new HomePage(getDriver()).open();
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened.");
         HeaderComponent header = homePage.getHeader();
         SignUpModalComponent signUpModal = header.clickSignUp();
         signUpModal.fillSignUpForm(user.username(), user.password());
