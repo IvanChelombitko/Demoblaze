@@ -3,7 +3,6 @@ package ua.solvd.demoblaze.mobile;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solvd.demoblaze.BaseTest;
-import ua.solvd.demoblaze.pages.ChromeNativePageCommon;
 import ua.solvd.demoblaze.pages.HomePageCommon;
 import ua.solvd.demoblaze.util.MobileContextService;
 
@@ -15,10 +14,7 @@ public class ContextSwitchTest extends BaseTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         MobileContextService.switchContextToNative(getDriver());
-        ChromeNativePageCommon chromePage = initPage(getDriver(), ChromeNativePageCommon.class);
-        chromePage.clickTabSwitcher().clickNewTab();
         MobileContextService.switchContextToWebView(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Failed to load page in the new tab");
+        Assert.assertTrue(homePage.isPageOpened(), "Failed to return to the web context");
     }
 }

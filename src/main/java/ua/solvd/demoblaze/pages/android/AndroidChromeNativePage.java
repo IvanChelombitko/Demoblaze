@@ -10,10 +10,10 @@ import ua.solvd.demoblaze.pages.ChromeNativePageCommon;
 public class AndroidChromeNativePage extends ChromeNativePageCommon {
 
     @FindBy(id = "com.android.chrome:id/menu_button")
-    protected ExtendedWebElement menuButton;
+    private ExtendedWebElement menuButton;
 
     @FindBy(xpath = "//android.widget.TextView[@text='New tab']")
-    protected ExtendedWebElement newTabMenuItem;
+    private ExtendedWebElement newTabMenuItem;
 
     public AndroidChromeNativePage(WebDriver driver) {
         super(driver);
