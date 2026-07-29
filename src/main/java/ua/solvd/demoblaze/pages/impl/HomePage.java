@@ -4,8 +4,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ua.solvd.demoblaze.enums.Category;
-import ua.solvd.demoblaze.enums.Product;
+import ua.solvd.demoblaze.model.Category;
+import ua.solvd.demoblaze.model.Product;
 import ua.solvd.demoblaze.pages.BasePage;
 import ua.solvd.demoblaze.util.ConfigReader;
 
@@ -19,6 +19,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".hrefch")
     private List<WebElement> products;
 
+    @FindBy(css = ".list-group")
+    private WebElement categoriesMenu;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -27,6 +30,10 @@ public class HomePage extends BasePage {
         String demoblazeUrl = ConfigReader.getProperty("base.url");
         driver.get(demoblazeUrl);
         return this;
+    }
+
+    public HeaderComponent getHeader() {
+        return new HeaderComponent(driver);
     }
 
     public HomePage selectCategory(Category category) {
@@ -47,5 +54,9 @@ public class HomePage extends BasePage {
                 .orElseThrow(() -> new NoSuchElementException("Product with name '" + product.getName() + "' was not found on the page."));
         clickElement(targetProduct, "Product: " + product.getName());
         return new ProductPage(driver);
+    }
+
+    public boolean isCategoriesMenuDisplayed() {
+        return isElementVisible(categoriesMenu, "Categories Menu");
     }
 }

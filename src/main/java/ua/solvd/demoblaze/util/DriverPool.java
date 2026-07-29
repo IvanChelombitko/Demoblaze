@@ -8,9 +8,15 @@ public class DriverPool {
     private DriverPool() {
     }
 
+    public static void initDriver(String browser) {
+        if (driver.get() == null) {
+            driver.set(DriverFactory.createDriver(browser));
+        }
+    }
+
     public static WebDriver getDriver() {
         if (driver.get() == null) {
-            driver.set(DriverFactory.createDriver());
+            initDriver("chrome");
         }
         return driver.get();
     }
