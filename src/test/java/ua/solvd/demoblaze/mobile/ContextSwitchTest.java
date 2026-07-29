@@ -12,9 +12,9 @@ public class ContextSwitchTest extends BaseTest {
     public void verifyNativeContextSwitch() {
         HomePageCommon homePage = initPage(getDriver(), HomePageCommon.class);
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened.");
         MobileContextService.switchContextToNative(getDriver());
         MobileContextService.switchContextToWebView(getDriver());
-        Assert.assertTrue(homePage.isPageOpened(), "Failed to return to the web context");
+        Assert.assertTrue(homePage.isPageOpened(), "Failed to return to the web context.");
     }
 }
