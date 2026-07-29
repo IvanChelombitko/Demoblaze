@@ -4,24 +4,27 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import ua.solvd.demoblaze.constant.Constants;
 
 public abstract class BasePage extends AbstractPage {
-    protected static final long DEFAULT_TIMEOUT = 10L;
-    protected static final long MINIMUM_TIMEOUT = 3L;
-
     public BasePage(WebDriver driver) {
         super(driver);
     }
 
-    protected String getAlertTextAndAccept() {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_TIMEOUT));
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert = getDriver().switchTo().alert();
-        String alertText = alert.getText();
+    protected Alert getAlert() {
+        waitUntil(ExpectedConditions.alertIsPresent(), Constants.DEFAULT_TIMEOUT);
+        return getDriver().switchTo().alert();
+    }
+
+    protected String acceptAlertAndGetText() {
+        Alert alert = getAlert();
+        String text = alert.getText();
         alert.accept();
-        return alertText;
+        return text;
+    }
+
+    public HeaderComponent getHeader() {
+        CommonBasePage basePage = initPage(getDriver(), CommonBasePage.class);
+        return basePage.getHeader();
     }
 }

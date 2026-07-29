@@ -2,8 +2,8 @@
 <suite name="Demoblaze Mobile Context Regression Test-Suite" verbose="1" parallel="false" thread-count="1">
     <test name="Android Chrome Native Test Execution">
         <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="ua.solvd.demoblaze.impl.ContextSwitchTest"/>
-        </classes>
+        <packages>
+            <package name="ua.solvd.demoblaze.mobile"/>
+        </packages>
     </test>
 </suite>

@@ -2,24 +2,15 @@
 <suite name="Demoblaze Desktop Regression Test-Suite" parallel="classes" thread-count="2">
     <test name="Chrome Test Execution">
         <parameter name="browser" value="chrome"/>
-        <parameter name="selenium_url" value="http://localhost:4444/wd/hub"/>
-        <classes>
-            <class name="ua.solvd.demoblaze.impl.SignUpTest"/>
-            <class name="ua.solvd.demoblaze.impl.LoginTest"/>
-            <class name="ua.solvd.demoblaze.impl.AddToCartTest"/>
-            <class name="ua.solvd.demoblaze.impl.ContactTest"/>
-            <class name="ua.solvd.demoblaze.impl.NegativeLoginTest"/>
-        </classes>
+        <packages>
+            <package name="ua.solvd.demoblaze.common"/>
+        </packages>
     </test>
     <test name="Firefox Test Execution">
         <parameter name="browser" value="firefox"/>
         <parameter name="selenium_url" value="http://localhost:4445/wd/hub"/>
-        <classes>
-            <class name="ua.solvd.demoblaze.impl.SignUpTest"/>
-            <class name="ua.solvd.demoblaze.impl.LoginTest"/>
-            <class name="ua.solvd.demoblaze.impl.AddToCartTest"/>
-            <class name="ua.solvd.demoblaze.impl.ContactTest"/>
-            <class name="ua.solvd.demoblaze.impl.NegativeLoginTest"/>
-        </classes>
+        <packages>
+            <package name="ua.solvd.demoblaze.common"/>
+        </packages>
     </test>
 </suite>

@@ -8,18 +8,20 @@ import java.util.Set;
 public class MobileContextService {
     private static final String NATIVE_CONTEXT = "NATIVE_APP";
 
+    private static SupportsContextSwitching getContextDriver(WebDriver driver) {
+        return (SupportsContextSwitching) driver;
+    }
+
     public static void switchContextToNative(WebDriver driver) {
-        SupportsContextSwitching contextDriver = (SupportsContextSwitching) driver;
-        contextDriver.context(NATIVE_CONTEXT);
+        getContextDriver(driver).context(NATIVE_CONTEXT);
     }
 
     public static void switchContextToWebView(WebDriver driver) {
-        SupportsContextSwitching contextDriver = (SupportsContextSwitching) driver;
-        Set<String> availableContexts = contextDriver.getContextHandles();
+        Set<String> availableContexts = getContextDriver(driver).getContextHandles();
         String webviewContext = availableContexts.stream()
-                .filter(context -> !context.equals(NATIVE_CONTEXT))
+                .filter(context -> context.startsWith("WEBVIEW") || context.equals("CHROMIUM"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("No web context found. Available contexts: " + availableContexts));
-        contextDriver.context(webviewContext);
+        getContextDriver(driver).context(webviewContext);
     }
 }
