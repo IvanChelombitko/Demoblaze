@@ -6,54 +6,54 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class HeaderComponent extends BasePage {
+public abstract class HeaderComponentCommon extends BasePage {
 
     @Name("Cart Navigation Link")
     @FindBy(css = "#cartur")
-    private ExtendedWebElement cartNavLink;
+    protected ExtendedWebElement cartNavLink;
 
     @Name("Contact Link")
     @FindBy(css = "a[data-target='#exampleModal']")
-    private ExtendedWebElement contactLink;
+    protected ExtendedWebElement contactLink;
 
     @Name("Sign Up Link")
     @FindBy(css = "#signin2")
-    private ExtendedWebElement signUpLink;
+    protected ExtendedWebElement signUpLink;
 
     @Name("Log In Link")
     @FindBy(css = "#login2")
-    private ExtendedWebElement logInLink;
+    protected ExtendedWebElement logInLink;
 
     @Name("Log Out Link")
     @FindBy(css = "#logout2")
-    private ExtendedWebElement logOutLink;
+    protected ExtendedWebElement logOutLink;
 
     @Name("Welcome Message")
     @FindBy(css = "#nameofuser")
-    private ExtendedWebElement welcomeMessage;
+    protected ExtendedWebElement welcomeMessage;
 
-    public HeaderComponent(WebDriver driver) {
+    public HeaderComponentCommon(WebDriver driver) {
         super(driver);
     }
 
-    public CartPage clickCart() {
+    public CartPageCommon clickCart() {
         cartNavLink.click();
-        return new CartPage(getDriver());
+        return initPage(getDriver(), CartPageCommon.class);
     }
 
-    public ContactModalComponent clickContact() {
+    public ContactModalComponentCommon clickContact() {
         contactLink.click();
-        return new ContactModalComponent(getDriver());
+        return initPage(getDriver(), ContactModalComponentCommon.class);
     }
 
-    public SignUpModalComponent clickSignUp() {
+    public SignUpModalComponentCommon clickSignUp() {
         signUpLink.click();
-        return new SignUpModalComponent(getDriver());
+        return initPage(getDriver(), SignUpModalComponentCommon.class);
     }
 
-    public LoginModalComponent clickLogIn() {
+    public LoginModalComponentCommon clickLogIn() {
         logInLink.click();
-        return new LoginModalComponent(getDriver());
+        return initPage(getDriver(), LoginModalComponentCommon.class);
     }
 
     public boolean isWelcomeMessageDisplayed() {

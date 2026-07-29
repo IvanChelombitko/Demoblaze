@@ -6,29 +6,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ua.solvd.demoblaze.pages.BasePage;
 
-public class LoginModalComponent extends BasePage {
+public abstract class LoginModalComponentCommon extends BasePage {
 
     @Name("Login Username")
     @FindBy(css = "#loginusername")
-    private ExtendedWebElement usernameInput;
+    protected ExtendedWebElement usernameInput;
 
     @Name("Login Password")
     @FindBy(css = "#loginpassword")
-    private ExtendedWebElement passwordInput;
+    protected ExtendedWebElement passwordInput;
 
     @Name("Log In Button")
     @FindBy(css = "button[onclick='logIn()']")
-    private ExtendedWebElement logInButton;
+    protected ExtendedWebElement logInButton;
 
     @Name("Log In Modal Container")
     @FindBy(css = "#logInModal")
-    private ExtendedWebElement modalContainer;
+    protected ExtendedWebElement modalContainer;
 
-    public LoginModalComponent(WebDriver driver) {
+    public LoginModalComponentCommon(WebDriver driver) {
         super(driver);
     }
 
-    public LoginModalComponent fillLoginForm(String username, String password) {
+    public LoginModalComponentCommon fillLoginForm(String username, String password) {
         usernameInput.type(username);
         passwordInput.type(password);
         return this;
