@@ -24,9 +24,12 @@ public class LoginModalComponentCommon extends BasePage {
     }
 
     public LoginModalComponentCommon fillLoginForm(String username, String password) {
-        usernameInput.isElementPresent(Constants.MINIMUM_TIMEOUT);
-        usernameInput.type(username);
-        passwordInput.type(password);
+        if (usernameInput.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
+            usernameInput.type(username);
+            passwordInput.type(password);
+        } else {
+            throw new RuntimeException("Login modal animation did not finish in time.");
+        }
         return this;
     }
 
