@@ -4,10 +4,10 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ua.solvd.demoblaze.pages.ChromeNativePageCommon;
+import ua.solvd.demoblaze.pages.NativeBrowserPageCommon;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ChromeNativePageCommon.class)
-public class AndroidChromeNativePage extends ChromeNativePageCommon {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = NativeBrowserPageCommon.class)
+public class AndroidChromeNativePage extends NativeBrowserPageCommon {
 
     @FindBy(id = "com.android.chrome:id/menu_button")
     private ExtendedWebElement menuButton;
@@ -20,13 +20,13 @@ public class AndroidChromeNativePage extends ChromeNativePageCommon {
     }
 
     @Override
-    public ChromeNativePageCommon clickTabSwitcher() {
+    public NativeBrowserPageCommon clickTabSwitcher() {
         menuButton.click();
         return this;
     }
 
     @Override
-    public ChromeNativePageCommon clickNewTab() {
+    public NativeBrowserPageCommon clickNewTab() {
         newTabMenuItem.click();
         return this;
     }

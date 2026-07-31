@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solvd.demoblaze.BaseTest;
 import ua.solvd.demoblaze.pages.HomePageCommon;
+import ua.solvd.demoblaze.pages.NativeBrowserPageCommon;
 import ua.solvd.demoblaze.util.MobileContextService;
 
 public class ContextSwitchTest extends BaseTest {
@@ -14,7 +15,10 @@ public class ContextSwitchTest extends BaseTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened.");
         MobileContextService.switchContextToNative(getDriver());
+        NativeBrowserPageCommon nativeBrowserPage = initPage(getDriver(), NativeBrowserPageCommon.class);
+        nativeBrowserPage.clickTabSwitcher().clickNewTab();
         MobileContextService.switchContextToWebView(getDriver());
-        Assert.assertTrue(homePage.isPageOpened(), "Failed to return to the web context.");
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Failed to load page in the new tab after returning to web context.");
     }
 }
