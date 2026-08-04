@@ -6,7 +6,7 @@ public class UserService {
     private UserService() {
     }
 
-    public static User createRandomUser() {
+    public static User createUniqueUserWithDefaultPassword() {
         String username = "TestUser_" + System.currentTimeMillis();
         String password = "StrongPassword123!";
         return new User(username, password);
