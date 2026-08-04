@@ -29,7 +29,9 @@ public class HomePageCommon extends BasePage {
     }
 
     public HomePageCommon selectCategory(Category category) {
-        categoriesMenu.isElementPresent(Constants.MINIMUM_TIMEOUT);
+        if (!categoriesMenu.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
+            throw new RuntimeException("Categories menu did not load within the timeout.");
+        }
         ExtendedWebElement targetCategory = categories.stream()
                 .filter(c -> c.getText().trim().equalsIgnoreCase(category.getName()))
                 .findFirst()
@@ -39,7 +41,9 @@ public class HomePageCommon extends BasePage {
     }
 
     public ProductPageCommon selectProduct(Product product) {
-        firstProductIndicator.isElementPresent(Constants.MINIMUM_TIMEOUT);
+        if (!firstProductIndicator.isElementPresent(Constants.MINIMUM_TIMEOUT)) {
+            throw new RuntimeException("Products list did not load within the timeout.");
+        }
         ExtendedWebElement targetProduct = products.stream()
                 .filter(p -> p.getText().trim().equalsIgnoreCase(product.getName()))
                 .findFirst()

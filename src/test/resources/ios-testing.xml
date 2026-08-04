@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Demoblaze iOS Regression Test-Suite" parallel="false" thread-count="1">
+    <test name="iOS Safari Test Execution">
+        <parameter name="browser" value="safari"/>
+        <packages>
+            <package name="ua.solvd.demoblaze.common"/>
+        </packages>
+    </test>
+</suite>
